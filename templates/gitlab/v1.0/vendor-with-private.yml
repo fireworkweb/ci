@@ -1,5 +1,5 @@
 include:
-  - https://raw.githubusercontent.com/fireworkweb/fwd/1.0-rc/gitlab-ci/vendor.yml
+  - https://ci.fwd.tools/gitlab/v1.0/vendor.yml
 
 .vendor-with-private:
   extends: .vendor

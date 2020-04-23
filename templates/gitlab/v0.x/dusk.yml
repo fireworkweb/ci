@@ -1,6 +1,6 @@
 .dusk:
   stage: test
-  image: fireworkweb/fwd
+  image: fireworkweb/fwd:0.26
   services:
     - docker:dind
   tags:

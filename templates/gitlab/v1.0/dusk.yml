@@ -1,5 +1,5 @@
 include:
-  - https://raw.githubusercontent.com/fireworkweb/fwd/1.0-rc/gitlab-ci/testing-base.yml
+  - https://ci.fwd.tools/gitlab/v1.0/testing-base.yml
 
 .dusk:
   extends: .testing-base
