@@ -8,18 +8,18 @@ variables:
   FWD_COMPOSE_EXEC_FLAGS: -T
 
 include:
-  - https://raw.githubusercontent.com/fireworkweb/fwd/1.0-rc/gitlab-ci/vendor.yml
-  # - https://raw.githubusercontent.com/fireworkweb/fwd/1.0-rc/gitlab-ci/vendor-with-private.yml
-  - https://raw.githubusercontent.com/fireworkweb/fwd/1.0-rc/gitlab-ci/assets.yml
-  - https://raw.githubusercontent.com/fireworkweb/fwd/1.0-rc/gitlab-ci/eslint.yml
-  - https://raw.githubusercontent.com/fireworkweb/fwd/1.0-rc/gitlab-ci/phpmnd.yml
-  - https://raw.githubusercontent.com/fireworkweb/fwd/1.0-rc/gitlab-ci/phpcpd.yml
-  - https://raw.githubusercontent.com/fireworkweb/fwd/1.0-rc/gitlab-ci/php-cs-fixer.yml
-  - https://raw.githubusercontent.com/fireworkweb/fwd/1.0-rc/gitlab-ci/phan.yml
-  - https://raw.githubusercontent.com/fireworkweb/fwd/1.0-rc/gitlab-ci/phpmd.yml
-  - https://raw.githubusercontent.com/fireworkweb/fwd/1.0-rc/gitlab-ci/security-check.yml
-  - https://raw.githubusercontent.com/fireworkweb/fwd/1.0-rc/gitlab-ci/dusk.yml
-  - https://raw.githubusercontent.com/fireworkweb/fwd/1.0-rc/gitlab-ci/phpunit.yml
+  - https://ci.fwd.tools/gitlab/v1.0/vendor.yml
+  # - https://ci.fwd.tools/gitlab/v1.0/vendor-with-private.yml
+  - https://ci.fwd.tools/gitlab/v1.0/assets.yml
+  - https://ci.fwd.tools/gitlab/v1.0/eslint.yml
+  - https://ci.fwd.tools/gitlab/v1.0/phpmnd.yml
+  - https://ci.fwd.tools/gitlab/v1.0/phpcpd.yml
+  - https://ci.fwd.tools/gitlab/v1.0/php-cs-fixer.yml
+  - https://ci.fwd.tools/gitlab/v1.0/phan.yml
+  - https://ci.fwd.tools/gitlab/v1.0/phpmd.yml
+  - https://ci.fwd.tools/gitlab/v1.0/security-check.yml
+  - https://ci.fwd.tools/gitlab/v1.0/dusk.yml
+  - https://ci.fwd.tools/gitlab/v1.0/phpunit.yml
 
 # build
 vendor:
