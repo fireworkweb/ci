@@ -1,0 +1,10 @@
+.phpmd:
+  stage: QA
+  image: fireworkweb/fwd:1.0-rc
+  services:
+    - docker:dind
+  tags:
+    - dind
+  script:
+    - fwd phpmd
+  dependencies: []

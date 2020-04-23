@@ -1,0 +1,13 @@
+.phan:
+  stage: QA
+  image: fireworkweb/fwd:1.0-rc
+  services:
+    - docker:dind
+  tags:
+    - dind
+  before_script:
+    - cp .env.testing .env
+  script:
+    - fwd phan --color -p -l app -iy 5
+  dependencies:
+   - vendor
