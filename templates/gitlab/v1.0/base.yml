@@ -18,6 +18,7 @@ include:
   - https://ci.fwd.tools/gitlab/v1.0/phan.yml
   - https://ci.fwd.tools/gitlab/v1.0/phpmd.yml
   - https://ci.fwd.tools/gitlab/v1.0/security-check.yml
+  - https://ci.fwd.tools/gitlab/v1.0/testing-base.yml
   - https://ci.fwd.tools/gitlab/v1.0/dusk.yml
   - https://ci.fwd.tools/gitlab/v1.0/phpunit.yml
 

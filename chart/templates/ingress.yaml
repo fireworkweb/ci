@@ -9,13 +9,12 @@ metadata:
     helm.sh/chart: {{ .Chart.Name }}
     helm.sh/chart-version: {{ .Chart.Version }}
   annotations:
-    cert-manager.io/cluster-issuer: acme
     kubernetes.io/ingress.class: nginx
 spec:
   tls:
     - hosts:
       - ci.fwd.tools
-      secretName: ci-tls
+      secretName: fwd-tls
   rules:
     - host: ci.fwd.tools
       http:

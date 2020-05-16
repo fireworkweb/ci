@@ -1,6 +1,3 @@
-include:
-  - https://ci.fwd.tools/gitlab/v1.0/testing-base.yml
-
 .phpunit:
   extends: .testing-base
   script:
