@@ -22,7 +22,7 @@ include:
   - https://ci.fwd.tools/gitlab/v1.0/testing-base.yml
   - https://ci.fwd.tools/gitlab/v1.0/dusk.yml
   - https://ci.fwd.tools/gitlab/v1.0/phpunit.yml
-  # - https://ci.fwd.tools/gitlab/v1.0/fwd-tools.yml
+  # - https://ci.fwd.tools/gitlab/v1.0/k8s.yml
 
 # build
 vendor:
@@ -69,6 +69,6 @@ phpunit:
 # test
 
 # deploy
-# fwd-tools:
-#   extends: .fwd-tools
+# k8s:
+#   extends: .k8s
 # deploy

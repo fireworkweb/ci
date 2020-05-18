@@ -1,0 +1,34 @@
+.k8s:
+  stage: deploy
+  environment: $CI_COMMIT_BRANCH
+  image: fireworkweb/k8s:1.2.1
+  services:
+    - docker:dind
+  tags:
+    - dind
+  before_script:
+    - doctl auth init --access-token=$DO_TOKEN
+    - doctl registry login
+    - doctl kubernetes cluster kubeconfig save $DO_K8S
+  script:
+    - docker build --cache-from $K8S_REGISTRY/$K8S_ORG-$K8S_GROUP-$K8S_PROJECT-app:$CI_COMMIT_BRANCH --tag $K8S_REGISTRY/$K8S_ORG-$K8S_GROUP-$K8S_PROJECT-app:$CI_COMMIT_BRANCH -f Dockerfile.app .
+    - docker build --cache-from $K8S_REGISTRY/$K8S_ORG-$K8S_GROUP-$K8S_PROJECT-app:$CI_COMMIT_BRANCH --tag $K8S_REGISTRY/$K8S_ORG-$K8S_GROUP-$K8S_PROJECT-http:$CI_COMMIT_BRANCH -f Dockerfile.http .
+    - docker push $K8S_REGISTRY/$K8S_ORG-$K8S_GROUP-$K8S_PROJECT-app:$CI_COMMIT_BRANCH
+    - docker push $K8S_REGISTRY/$K8S_ORG-$K8S_GROUP-$K8S_PROJECT-http:$CI_COMMIT_BRANCH
+    - helm upgrade --install --atomic --namespace=$K8S_ENV-$K8S_ORG-$K8S_GROUP-$K8S_PROJECT --create-namespace $K8S_HELM_RELEASE --repo=$K8S_HELM_REPO --version=$K8S_HELM_VERSION $K8S_HELM_CHART -f $K8S_HELM_VALUES
+  dependencies:
+    - assets
+    - vendor
+  # variables:
+  #   DO_TOKEN: ""
+  #   DO_K8S: ""
+  #   K8S_REGISTRY: ""
+  #   K8S_ENV: ""
+  #   K8S_ORG: ""
+  #   K8S_GROUP: ""
+  #   K8S_PROJECT: ""
+  #   K8S_HELM_RELEASE: ""
+  #   K8S_HELM_REPO: ""
+  #   K8S_HELM_VERSION: ""
+  #   K8S_HELM_CHART: ""
+  #   K8S_HELM_VALUES: ""
