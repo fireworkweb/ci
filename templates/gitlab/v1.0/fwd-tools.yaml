@@ -1,4 +1,4 @@
-helm:
+fwd-tools:
   stage: deploy
   environment: $CI_COMMIT_BRANCH
   only:
