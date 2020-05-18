@@ -6,6 +6,7 @@ stages:
 variables:
   GIT_STRATEGY: fetch
   FWD_COMPOSE_EXEC_FLAGS: -T
+  DOCKER_TLS_CERTDIR: ""
 
 include:
   - https://ci.fwd.tools/gitlab/v1.0/vendor.yml
@@ -21,6 +22,7 @@ include:
   - https://ci.fwd.tools/gitlab/v1.0/testing-base.yml
   - https://ci.fwd.tools/gitlab/v1.0/dusk.yml
   - https://ci.fwd.tools/gitlab/v1.0/phpunit.yml
+  # - https://ci.fwd.tools/gitlab/v1.0/fwd-tools.yml
 
 # build
 vendor:
@@ -65,3 +67,8 @@ dusk:
 phpunit:
   extends: .phpunit
 # test
+
+# deploy
+# fwd-tools:
+#   extends: .fwd-tools
+# deploy
