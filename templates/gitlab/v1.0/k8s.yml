@@ -13,7 +13,6 @@
 #   K8S_HELM_VALUES: ""
 
 .k8s-base:
-  environment: $CI_COMMIT_BRANCH
   image: fireworkweb/k8s:1.2.1
   services:
     - docker:dind
@@ -26,6 +25,7 @@
 
 .k8s:
   extends: .k8s-base
+  environment: $CI_COMMIT_BRANCH
   stage: deploy
   script:
     - docker build --cache-from $K8S_REGISTRY/$K8S_ORG-$K8S_GROUP-$K8S_PROJECT-app:$CI_COMMIT_BRANCH --tag $K8S_REGISTRY/$K8S_ORG-$K8S_GROUP-$K8S_PROJECT-app:$CI_COMMIT_BRANCH -f Dockerfile.app .
@@ -59,6 +59,7 @@
 
 .k8s-deploy:
   extends: .k8s-base
+  environment: $CI_COMMIT_BRANCH
   stage: deploy
   script:
     - helm upgrade --install --atomic --namespace=$K8S_ENV-$K8S_ORG-$K8S_GROUP-$K8S_PROJECT --create-namespace $K8S_HELM_RELEASE --repo=$K8S_HELM_REPO --version=$K8S_HELM_VERSION $K8S_HELM_CHART -f $K8S_HELM_VALUES
