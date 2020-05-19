@@ -10,6 +10,7 @@
       - node_modules/
   artifacts:
     paths:
+      - node_modules
       - public/css
       - public/fonts
       - public/img
