@@ -25,7 +25,7 @@
     - doctl kubernetes cluster kubeconfig save $DO_K8S
 
 .k8s:
-  extends: k8s-base
+  extends: .k8s-base
   stage: deploy
   script:
     - docker build --cache-from $K8S_REGISTRY/$K8S_ORG-$K8S_GROUP-$K8S_PROJECT-app:$CI_COMMIT_BRANCH --tag $K8S_REGISTRY/$K8S_ORG-$K8S_GROUP-$K8S_PROJECT-app:$CI_COMMIT_BRANCH -f Dockerfile.app .
@@ -38,7 +38,7 @@
     - vendor
 
 .k8s-build-app:
-  extends: k8s-base
+  extends: .k8s-base
   stage: build-deploy
   script:
     - docker build --cache-from $K8S_REGISTRY/$K8S_ORG-$K8S_GROUP-$K8S_PROJECT-app:$CI_COMMIT_BRANCH --tag $K8S_REGISTRY/$K8S_ORG-$K8S_GROUP-$K8S_PROJECT-app:$CI_COMMIT_BRANCH -f Dockerfile.app .
@@ -48,7 +48,7 @@
     - vendor
 
 .k8s-build-http:
-  extends: k8s-base
+  extends: .k8s-base
   stage: build-deploy
   script:
     - docker build --cache-from $K8S_REGISTRY/$K8S_ORG-$K8S_GROUP-$K8S_PROJECT-http:$CI_COMMIT_BRANCH --tag $K8S_REGISTRY/$K8S_ORG-$K8S_GROUP-$K8S_PROJECT-http:$CI_COMMIT_BRANCH -f Dockerfile.http .
@@ -58,7 +58,7 @@
     - vendor
 
 .k8s-deploy:
-  extends: k8s-base
+  extends: .k8s-base
   stage: deploy
   script:
     - helm upgrade --install --atomic --namespace=$K8S_ENV-$K8S_ORG-$K8S_GROUP-$K8S_PROJECT --create-namespace $K8S_HELM_RELEASE --repo=$K8S_HELM_REPO --version=$K8S_HELM_VERSION $K8S_HELM_CHART -f $K8S_HELM_VALUES
