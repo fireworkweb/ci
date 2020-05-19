@@ -1,10 +1,8 @@
+include:
+  - https://ci.fwd.tools/gitlab/v1.0/assets-base.yml
+
 .assets:
-  stage: build
-  image: fireworkweb/fwd:1.0-rc
-  services:
-    - docker:dind
-  tags:
-    - dind
+  extends: .assets-base
   cache:
     paths:
       - node_modules/
@@ -14,11 +12,3 @@
     - fwd yarn install --no-progress --silent --force --cache-folder=.yarn/
   script:
     - fwd yarn production
-  artifacts:
-    paths:
-      - public/js
-      - public/css
-      - public/img
-      - public/mix-manifest.json
-    expire_in: 1 week
-  dependencies: []

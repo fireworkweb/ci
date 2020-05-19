@@ -1,22 +1,9 @@
-.assets:
-  stage: build
-  image: fireworkweb/fwd:1.0-rc
-  services:
-    - docker:dind
-  tags:
-    - dind
-  cache:
-    paths:
-      - node_modules/
+include:
+  - https://ci.fwd.tools/gitlab/v1.0/assets-base.yml
+
+.assets-npm:
+  extends: .assets-base
   before_script:
     - fwd npm install --force
   script:
     - fwd npm run production
-  artifacts:
-    paths:
-      - public/js
-      - public/css
-      - public/img
-      - public/mix-manifest.json
-    expire_in: 1 week
-  dependencies: []

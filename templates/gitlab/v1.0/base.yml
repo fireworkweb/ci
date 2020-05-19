@@ -8,6 +8,7 @@ stages:
 variables:
   GIT_STRATEGY: fetch
   FWD_COMPOSE_EXEC_FLAGS: -T
+  FWD_DOCKER_RUN_FLAGS: ""
   DOCKER_TLS_CERTDIR: ""
 
 include:

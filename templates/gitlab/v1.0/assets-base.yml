@@ -1,0 +1,18 @@
+.assets-base:
+  stage: build
+  image: fireworkweb/fwd:1.0-rc
+  services:
+    - docker:dind
+  tags:
+    - dind
+  cache:
+    paths:
+      - node_modules/
+  artifacts:
+    paths:
+      - public/css
+      - public/fonts
+      - public/img
+      - public/js
+      - public/mix-manifest.json
+    expire_in: 1 week
