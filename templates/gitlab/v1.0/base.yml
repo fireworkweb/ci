@@ -2,6 +2,8 @@ stages:
   - build
   - QA
   - test
+  - build-deploy
+  - deploy
 
 variables:
   GIT_STRATEGY: fetch
@@ -71,4 +73,13 @@ phpunit:
 # deploy
 # k8s:
 #   extends: .k8s
+
+# k8s-build-app:
+#   extends: .k8s-build-app
+
+# k8s-build-http:
+#   extends: .k8s-build-http
+
+# k8s-deploy:
+#   extends: .k8s-deploy
 # deploy

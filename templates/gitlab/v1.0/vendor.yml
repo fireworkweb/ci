@@ -18,5 +18,6 @@
   artifacts:
     paths:
       - vendor
+      - public/vendor
     expire_in: 1 hour
   dependencies: []
