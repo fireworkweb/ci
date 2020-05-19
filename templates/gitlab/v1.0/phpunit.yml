@@ -1,7 +1,7 @@
 .phpunit:
   extends: .testing-base
   script:
-    - fwd phpunit --colors=never -vvv
+    - fwd phpunit --colors=never
   artifacts:
     paths:
       - storage/logs
