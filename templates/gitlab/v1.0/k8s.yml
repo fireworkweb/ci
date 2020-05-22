@@ -1,5 +1,7 @@
 include:
+  - https://ci.fwd.tools/gitlab/v1.0/k8s-base.yml
   - https://ci.fwd.tools/gitlab/v1.0/k8s-build.yml
+  - https://ci.fwd.tools/gitlab/v1.0/k8s-deploy.yml
 
 .k8s:
   extends: .k8s-base
@@ -36,10 +38,3 @@ include:
   dependencies:
     - assets
     - vendor
-
-.k8s-deploy:
-  extends: .k8s-base
-  environment: $CI_COMMIT_BRANCH
-  stage: deploy
-  script:
-    - helm upgrade --install --atomic --namespace=$K8S_ENV-$K8S_ORG-$K8S_GROUP-$K8S_PROJECT --create-namespace $K8S_HELM_RELEASE --repo=$K8S_HELM_REPO --version=$K8S_HELM_VERSION $K8S_HELM_CHART -f $K8S_HELM_VALUES

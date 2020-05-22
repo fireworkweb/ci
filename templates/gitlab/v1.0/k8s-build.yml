@@ -1,15 +1,11 @@
 # variables:
 #   K8S_REGISTRY: ""
-#   K8S_ENV: ""
 #   K8S_ORG: ""
 #   K8S_GROUP: ""
 #   K8S_PROJECT: ""
 #   K8S_IMAGE_NAME: ""
 #   K8S_IMAGE_DOCKERFILE: ""
 #   K8S_IMAGE_DOCKERPATH: ""
-
-include:
-  - https://ci.fwd.tools/gitlab/v1.0/k8s-base.yml
 
 .k8s-build-app:
   extends: .k8s-base
