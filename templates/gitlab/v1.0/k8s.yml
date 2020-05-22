@@ -21,6 +21,7 @@ include:
   variables:
     K8S_IMAGE_NAME: app
     K8S_IMAGE_DOCKERFILE: Dockerfile.app
+    K8S_IMAGE_DOCKERPATH: .
   dependencies:
     - assets
     - vendor
@@ -31,6 +32,7 @@ include:
   variables:
     K8S_IMAGE_NAME: http
     K8S_IMAGE_DOCKERFILE: Dockerfile.http
+    K8S_IMAGE_DOCKERPATH: .
   dependencies:
     - assets
     - vendor
