@@ -1,0 +1,19 @@
+# variables:
+#   K8S_REGISTRY: ""
+#   K8S_ENV: ""
+#   K8S_ORG: ""
+#   K8S_GROUP: ""
+#   K8S_PROJECT: ""
+#   K8S_IMAGE_NAME: ""
+#   K8S_IMAGE_DOCKERFILE: ""
+
+include:
+  - https://ci.fwd.tools/gitlab/v1.0/k8s-base.yml
+
+.k8s-build-app:
+  extends: .k8s-base
+  stage: build-deploy
+  script:
+    - docker build --cache-from $K8S_REGISTRY/$K8S_ORG-$K8S_GROUP-$K8S_PROJECT-app:$CI_COMMIT_BRANCH --tag $K8S_REGISTRY/$K8S_ORG-$K8S_GROUP-$K8S_PROJECT-$K8S_IMAGE_NAME:$CI_COMMIT_BRANCH -f $K8S_IMAGE_DOCKERFILE .
+    - docker push $K8S_REGISTRY/$K8S_ORG-$K8S_GROUP-$K8S_PROJECT-$K8S_IMAGE_NAME:$CI_COMMIT_BRANCH
+

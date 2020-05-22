@@ -1,0 +1,14 @@
+# variables:
+#   DO_TOKEN: ""
+#   DO_K8S: ""
+
+.k8s-base:
+  image: fireworkweb/k8s:1.2.1
+  services:
+    - docker:dind
+  tags:
+    - dind
+  before_script:
+    - doctl auth init --access-token=$DO_TOKEN
+    - doctl registry login
+    - doctl kubernetes cluster kubeconfig save $DO_K8S
