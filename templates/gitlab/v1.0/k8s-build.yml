@@ -7,7 +7,7 @@
 #   K8S_IMAGE_DOCKERFILE: ""
 #   K8S_IMAGE_DOCKERPATH: ""
 
-.k8s-build-app:
+.k8s-build:
   extends: .k8s-base
   stage: build-deploy
   script:
